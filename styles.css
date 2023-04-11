@@ -76,7 +76,7 @@
 
 @keyframes white-caret{
     from, to { border-color: transparent }
-    30% { border-color:rgba(166,248,164,1); }
+    30% { border-color:rgba(166,248,164); }
 }
   
 
