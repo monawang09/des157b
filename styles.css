@@ -7,7 +7,6 @@
 
 
 
-
 #head-container{
     display: flex; 
     gap: 30px;
@@ -48,6 +47,14 @@
 #course.switch{
     color: #020202;
     background: rgb(151,216,208);
+    border-right: 0.4em solid rgba(166,248,164,1) 36%;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .01em; /* Adjust as needed */
+    animation: 
+    typing 3.5s steps(40, end),
+    white-caret .75s step-end infinite;
     background: linear-gradient(152deg, rgba(151,216,208,1) 0%, rgba(166,248,164,1) 36%, rgba(251,236,158,1) 71%, rgba(249,177,185,1) 84%);
 }
 
@@ -62,10 +69,15 @@
   }
 
   /* The typewriter cursor effect */
-  @keyframes blink-caret {
+@keyframes blink-caret {
     from, to { border-color: transparent }
     30% { border-color: rgb(59, 253, 0); }
-  }
+}
+
+@keyframes white-caret{
+    from, to { border-color: transparent }
+    30% { border-color:rgba(166,248,164,1); }
+}
   
 
   #croc{
@@ -95,7 +107,7 @@ body {
 }
 
 body.switch {
-    background-color: rgb(235, 235, 235);
+    background-color: white;
     color: #333;
     
 }
@@ -164,10 +176,14 @@ main section {
 }
 
 main section.switch{
-    width: 25%;
-    border: 1px rgb(10, 10, 9) solid;
+    width: 23%;
+    border: 0;
     margin: 0 .25em;
     padding: 1em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 10px 10px #888888;
+   
 }
 
 a {
@@ -192,6 +208,10 @@ section a {
     font-family: 'Source Code Pro', monospace;
     color: rgb(59, 253, 0);
 
+}
+
+section.switch a{
+    font-family: 'Schibsted Grotesk', sans-serif; 
 }
 
 section a:hover {

@@ -18,6 +18,7 @@
             course.className = 'switch';
             mona.className = 'switch';
             grad.className = 'switch'; 
+           
             for (const section of sections) {
                 section.className = 'switch';
             }
