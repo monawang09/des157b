@@ -4,22 +4,34 @@
     const button = document.querySelector('button');
     const body = document.querySelector('body');
     const banner = document.querySelector('#banner');
-    const sections = document.querySelectorAll('section')
+    const sections = document.querySelectorAll('section');
+    let croc = document.getElementById("croc");
     let mode = 'dark';
 
     button.addEventListener('click', function() {
-        if (mode === 'dark') {
+        if (mode == 'dark') { 
+            // Switch to light
+            croc.src = "artist.svg"; 
+            croc.className = 'switch'
             body.className = 'switch';
-            banner.className = 'switch';
             button.className = 'switch';
+            course.className = 'switch';
+            mona.className = 'switch';
+            grad.className = 'switch'; 
             for (const section of sections) {
                 section.className = 'switch';
             }
             mode = 'light';
         } else {
+            console.log(mode);
+            croc.src = "croc.gif"; 
             body.removeAttribute('class');
-            banner.removeAttribute('class');
+            croc.removeAttribute('class'); 
+            grad.removeAttribute('class');
+         //   banner.removeAttribute('class');
             button.removeAttribute('class');
+            course.removeAttribute('class');
+            mona.removeAttribute('class');
             for (const section of sections) {
                 section.removeAttribute('class');
             }

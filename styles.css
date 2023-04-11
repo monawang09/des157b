@@ -2,15 +2,102 @@
     box-sizing: border-box;
 }
 
+/* When using a mouse, it is blue */
+::selection { background: blue; } 
+
+
+
+
+#head-container{
+    display: flex; 
+    gap: 30px;
+    padding-top: 10%;
+}
+
+#mona{
+    padding: 0;
+    margin: 0;
+    color: rgb(59, 253, 0);
+    display: block;
+    /* width: max-content; */
+    white-space: nowrap;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 100px;
+    line-height: 100px;
+    margin-bottom: 30px;
+}
+
+#course{
+    color: rgb(59, 253, 0);
+    font-family: 'Source Code Pro', monospace;
+    padding: 0;
+    line-height: 20px;
+    font-size: 20px;
+    display: block;
+    /* typing effect */
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: 0.4em solid rgb(59, 253, 0); /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .01em; /* Adjust as needed */
+    animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+#course.switch{
+    color: #020202;
+    background: rgb(151,216,208);
+    background: linear-gradient(152deg, rgba(151,216,208,1) 0%, rgba(166,248,164,1) 36%, rgba(251,236,158,1) 71%, rgba(249,177,185,1) 84%);
+}
+
+#mona.switch{
+    color: #020202;
+}
+
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    30% { border-color: rgb(59, 253, 0); }
+  }
+  
+
+  #croc{
+    position: relative;
+    margin-left: 200px;
+    margin-top: -20px;
+    margin-bottom: 30px;
+    z-index: 2;
+    
+  }
+
+  #croc.switch{
+    position: relative;
+    margin-left: 130px;
+    margin-top: -0px;
+    margin-bottom: 0px;
+    width: 600px;
+    height: 300px;
+    z-index: 2;
+  }
+
+
 body {
-    background-color: #333;
+    background-color: #020202;
     color: rgb(235, 235, 235);
-    transition: all 2s;
+    transition: all 1s;
 }
 
 body.switch {
     background-color: rgb(235, 235, 235);
     color: #333;
+    
 }
 
 #container {
@@ -33,18 +120,35 @@ header {
     width: 1100px;
     height: 250px;
     margin: auto;
-    background-color: rgb(235, 235, 235);
+   /* background-color: rgb(235, 235, 235); */
     color: #333;
     overflow: hidden;
     display: grid;
 	place-items: center;
 }
 
-#banner.switch {
-    background-color: #333;
-    color: rgb(235, 235, 235);
+#grad.switch {
+    display: block;
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    border-radius: 20px;
+    background-color: rgb(151,216,208);
+    background: linear-gradient(152deg, rgba(151,216,208,1) 0%, rgba(166,248,164,1) 36%, rgba(251,236,158,1) 71%, rgba(249,177,185,1) 84%);
     transition: all 2s;
+    z-index: -10;
+    margin-left: 150px;
+    margin-top: -10px;
 }
+
+
+#grad{
+    display: block;
+    z-index: -10;
+    background-color: black;
+}
+
+
 
 main {
     display: flex;
@@ -54,7 +158,14 @@ main {
 
 main section {
     width: 25%;
-    border: 1px rgb(235, 235, 235) dashed;
+    border: 1px rgb(59, 253, 0) dashed;
+    margin: 0 .25em;
+    padding: 1em;
+}
+
+main section.switch{
+    width: 25%;
+    border: 1px rgb(10, 10, 9) solid;
     margin: 0 .25em;
     padding: 1em;
 }
@@ -78,12 +189,14 @@ section a {
     line-height: 1.1em;
     display: inline-block;
     padding: .5em;
-    color: orange;
+    font-family: 'Source Code Pro', monospace;
+    color: rgb(59, 253, 0);
+
 }
 
 section a:hover {
-    background-color: orange;
-    color: #333;
+    background-color: blue;
+    color: rgb(59, 253, 0);
 }
 
 section.switch a {
@@ -100,13 +213,14 @@ button {
     top: 20px;
     right: 20px;
     padding: 12px;
+    font-family: 'Source Code Pro', monospace;
     background-color: orange;
     color: #333;
     border: 1px solid transparent;
 }
 
 button:hover {
-    background-color: coral;
+    background-color: rgb(59, 253, 0);
     cursor: pointer;
 }
 
@@ -119,3 +233,11 @@ button.switch:hover {
     background-color: #333;
     color: rgb(235, 235, 235)
 }
+
+h3{
+    /* color: rgb(59, 253, 0); */
+    color: orange;
+    font-family: 'Source Code Pro', monospace;
+} 
+ 
+
