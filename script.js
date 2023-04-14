@@ -11,7 +11,7 @@
     button.addEventListener('click', function() {
         if (mode == 'dark') { 
             // Switch to light
-            croc.src = "artist.svg"; 
+            croc.src = "images/artist.svg"; 
             croc.className = 'switch'
             body.className = 'switch';
             button.className = 'switch';
@@ -25,7 +25,7 @@
             mode = 'light';
         } else {
             console.log(mode);
-            croc.src = "croc.gif"; 
+            croc.src = "images/croc.gif"; 
             body.removeAttribute('class');
             croc.removeAttribute('class'); 
             grad.removeAttribute('class');
