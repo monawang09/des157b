@@ -1,0 +1,35 @@
+h1 {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: aliceblue;
+  }
+
+
+  #img-container{
+    margin-left: 10px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap; 
+    overflow-x: scroll; 
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+  
+  p {
+    font-size: 18px;
+    margin-top: 20px;
+    color: aliceblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+  body{
+    background-color: black;
+  }
