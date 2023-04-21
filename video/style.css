@@ -31,7 +31,7 @@ body {
 }
 
 #video-container{
-    display: relative;
+   position: relative;
 }
 
 .scrolling-text-container {
