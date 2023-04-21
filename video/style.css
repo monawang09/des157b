@@ -10,14 +10,24 @@ body {
     color: antiquewhite;
 }
 
+
 #myVideo {
-    display: absolute;
-    right: 0;
-    bottom: 0;
-    display: block;
-    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+    filter: blur(0px);
+    width: auto;
+    height: 100%;
+    min-width: 50%;
     min-height: 100%;
-    margin-right: 0;
+}
+
+.controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 #video-container{
@@ -28,7 +38,7 @@ body {
     position: absolute;
     width: 100%;
     overflow: hidden;
-    top: 30%;
+    top: 20%;
     left: 0;
     width: 100%;
   }
@@ -36,7 +46,7 @@ body {
   .scrolling-text {
     white-space: nowrap;
     color: aliceblue;
-    font-size: 400px;
+    font-size: 100px;
     animation: scrolling 10s linear infinite;
     mix-blend-mode: difference;
   }
