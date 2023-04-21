@@ -1,81 +1,71 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: black;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: antiquewhite;
+  background-color: black;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: antiquewhite;
 }
 
 
 #myVideo {
-    position: absolute;
-    top: 50%;
-    left: 75%;
-    transform: translate(-50%,-50%);
-    filter: blur(0px);
-    width: auto;
-    height: 100%;
-    min-width: 50%;
-    min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%,-50%);
+  filter: blur(0px);
+  width: auto;
+  height: 100%;
+  min-width: 50%;
+  min-height: 100%;
 }
 
 .controls {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
 }
 
 #video-container{
-   position: relative;
+  display: relative;
 }
 
 .scrolling-text-container {
-    position: absolute;
-    width: 100%;
-    overflow: hidden;
-    top: 20%;
-    left: 0;
-    width: 100%;
-  }
-  
-  .scrolling-text {
-    white-space: nowrap;
-    color: aliceblue;
-    font-size: 100px;
-    animation: scrolling 10s linear infinite;
-    mix-blend-mode: difference;
-  }
-  
-  @keyframes scrolling {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-
-.fa-expand {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 36px;
-    color: orange;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  top: 20%;
+  left: 0;
+  width: 100%;
 }
 
-.fa-expand:hover {
-    cursor: pointer;
+.scrolling-text {
+  white-space: nowrap;
+  color: aliceblue;
+  font-size: 100px;
+  animation: scrolling 10s linear infinite;
+  mix-blend-mode: difference;
 }
 
-.hidden {
-    opacity: 0;
+@keyframes scrolling {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
-.showing {
-    opacity: 1;
+.fa-dove{
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  font-size: 36px;
+  color: antiquewhite;
+  transform: translate(-50%,-50%);
+  animation: bird 2s infinite alternate ease-in-out;
 }

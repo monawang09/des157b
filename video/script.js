@@ -9,3 +9,9 @@ document.addEventListener("mousemove", (event) => {
   const blurAmount = ((x - halfwidth)*(x - halfwidth) + (y - halfheight)*(y - halfheight))/ (halfwidth * halfwidth) * 10; 
   element.style.filter = `blur(${blurAmount}px)`;
 });
+
+const loading = document.querySelector('.fa-dove');
+
+myVideo.addEventListener('playing',function(){
+  loading.style.display = 'none'; 
+})
