@@ -1,0 +1,50 @@
+{
+    "Food": [
+      {
+        "time": "10:30",
+        "item": "Crossiant"
+      },
+      {
+        "time": "12:26",
+        "item": "Pho"
+      },
+      {
+        "time": "12:26",
+        "item": "Sushi"
+      },
+      {
+        "time": "3:30",
+        "item": "Iced Latte Without Latte Double"
+      },
+      {
+        "time": "6:29",
+        "item": "Beef and Potato stew"
+      },
+      {
+        "time": "6:29",
+        "item": "Lettuce and Creamy Pasta"
+      },
+      {
+        "time": "6:42",
+        "item": "Chicken Rice Bowl"
+      }
+    ],
+    "Drink": [
+      {
+        "time": "10:30",
+        "item": "English Breakfast Tea"
+      },
+      {
+        "time": "3:30",
+        "item": "Double Orange Soda"
+      }, 
+      {
+        "time": "12:26",
+        "item": "Pure Leaf Peach Tea"
+      },
+      {
+        "time": "10:32",
+        "item": "Milk Tea"
+      }
+    ]
+  }
