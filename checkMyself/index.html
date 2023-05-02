@@ -5,58 +5,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Manrope:wght@200;300;400&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <div id="title-page">
-        <h1>My Diet Tracker</h1>
-    </div>
+        <!-- <h1>Mona's Diet Tracker <i class="far fa-plus-square" id="fill-form"></i></h1>  -->
 
+        
+    </div>
+    <div id="content-container">
     <div class="calender">
         <div class="time-column">
-          <div class="hour">8:00 AM</div>
-          <div class="hour">9:00 AM</div>
+          <div class="hour">08:00 AM</div>
+          <div class="hour">09:00 AM</div>
           <div class="hour">10:00 AM</div>
           <div class="hour">11:00 AM</div>
           <div class="hour">12:00 PM</div>
-          <div class="hour">1:00 PM</div>
-          <div class="hour">2:00 PM</div>
-          <div class="hour">3:00 PM</div>
-          <div class="hour">4:00 PM</div>
-          <div class="hour">5:00 PM</div>
-          <div class="hour">6:00 PM</div>
-          <div class="hour">7:00 PM</div>
-          <div class="hour">8:00 PM</div>
-          <div class="hour">9:00 PM</div>
+          <div class="hour">01:00 PM</div>
+          <div class="hour">02:00 PM</div>
+          <div class="hour">03:00 PM</div>
+          <div class="hour">04:00 PM</div>
+          <div class="hour">05:00 PM</div>
+          <div class="hour">06:00 PM</div>
+          <div class="hour">07:00 PM</div>
+          <div class="hour">08:00 PM</div>
+          <div class="hour">09:00 PM</div>
           <div class="hour">10:00 PM</div>
           <div class="hour">11:00 PM</div>
         </div>
         <div class="events-column">
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
+          <div class="event-box" id="8:00"></div>
+          <div class="event-box" id="9:00"></div>
+          <div class="event-box" id="10:00"></div>
+          <div class="event-box" id="11:00"></div>
+          <div class="event-box" id="12:00"></div>
 
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
+          <div class="event-box"id="13:00"></div>
+          <div class="event-box" id="14:00"></div>
+          <div class="event-box" id="15:00"></div>
+          <div class="event-box" id="16:00"> </div>
+          <div class="event-box" id="17:00"></div>
 
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
-          <div class="event-box"></div>
+          <div class="event-box" id="18:00"></div>
+          <div class="event-box"  id="19:00"></div>
+          <div class="event-box" id="20:00"></div>
+          <div class="event-box"  id="21:00"></div>
+          <div class="event-box"  id="22:00"></div>
           <!-- ... and so on for each hour of the day -->
         </div>
+       
     </div>
+    <div id="right-side">
+    <h1>Mona's Diet Tracker </h1>
+    <!-- <i class="far fa-plus-square" id="fill-form"></i> -->
+    <div id="card-container">
+    </div>
+</div>
+</div>
+        <!-- <h3>Name:</h3> -->
+    <!-- This line masks the form feature   -->
+    <!-- <div class="overlay">
+    <form id="pop-up">
+        <label for="foodName">Food name:</label>
+        <input type="text" id="foodName" name="foodName" required>
+        
+        <label for="foodTime">Time:</label>
+        <input type="time" id="foodTime" name="foodTime" required>
 
-    <div class="food-container">
-        <h3>Name:</h3>
-    </div>
+        <label for="Calories">Calories:</label>
+        <input type="text" id="foodCalories" name="foodCalories" required>
+        
+        <button type="submit">Submit</button>
+    </form>   
+    </div> -->
+
+   
+
+    <script src="script.js"></script>
       
+    
     
 </body>
 </html>

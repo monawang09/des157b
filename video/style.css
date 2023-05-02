@@ -69,3 +69,7 @@ bottom: 0;
   transform: translate(-50%,-50%);
   animation: bird 2s infinite alternate ease-in-out;
 }
+
+.text-formatter{
+  padding: 20px;
+}

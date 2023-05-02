@@ -2,31 +2,34 @@
     "Food": [
       {
         "time": "10:30",
-        "item": "Crossiant"
+        "item": "Crossiant",
+        "type": "carbonhydrate"
       },
       {
         "time": "12:26",
-        "item": "Pho"
+        "item": "Pho, Sushi",
+        "type": "carbonhydrate"
+      },
+
+      {
+        "time": "15:30",
+        "item": "Iced Latte Without Ice Double",
+        "type": "water"
       },
       {
-        "time": "12:26",
-        "item": "Sushi"
+        "time": "18:29",
+        "item": "Beef and Potato Stew",
+        "type": "protein"
       },
       {
-        "time": "3:30",
-        "item": "Iced Latte Without Latte Double"
+        "time": "18:29",
+        "item": "Lettuce and Creamy Pasta",
+        "type": "fiber"
       },
       {
-        "time": "6:29",
-        "item": "Beef and Potato stew"
-      },
-      {
-        "time": "6:29",
-        "item": "Lettuce and Creamy Pasta"
-      },
-      {
-        "time": "6:42",
-        "item": "Chicken Rice Bowl"
+        "time": "21:42",
+        "item": "Chicken Rice Bowl",
+        "type": "protein"
       }
     ],
     "Drink": [
