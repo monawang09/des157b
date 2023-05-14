@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Project Proposal: The 100 Brick Project</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div id="btn-container">
+		<a href="https://docs.google.com/document/d/1FhkY013_5b6rMalvYdMewoMfTk2jdv9SoerspDHZqcg/edit?usp=sharing" >View Google Doc</a>
+        <a id="view-btn"> Copy Link</a>
+        <a id="view-color"> See Color Palette</a>
+        </div>
+        <div id="palette">
+            <img src="./image/palette.png" alt="colorPalette">
+        </div>
+        <div id="popup">
+            <p>Copy this link to access the Google Doc:</p>
+            <input type="text" id="doc-link" value="https://docs.google.com/document/d/1FhkY013_5b6rMalvYdMewoMfTk2jdv9SoerspDHZqcg/edit?usp=sharing">
+            <a id="copy-btn">Copy Link</a>
+        </div>
+	</header>
+    <article>
+	<h1>Project Proposal: The 100 Brick Project</h1>
+	<p>The project at hand involves the creation of a mobile version of the website that will showcase the stories behind the 100 bricks situated near the Davis Centennial Seal. The primary objective of this project is to foster a sense of community by introducing the rich history and backstories of the city to its inhabitants and tourists.</p>
+
+	<h2>Project Goal</h2>
+	<ul>
+		<li>To increase awareness and appreciation of the history and cultural significance of the city, by showcasing the stories and backstories behind the 100 bricks near the Davis Centennial Seal.</li>
+		<li>To promote a sense of community and pride among the city's inhabitants, by highlighting the shared heritage and stories that contribute to the city's identity.</li>
+		<li>To attract and engage tourists by providing them with a unique and informative experience that immerses them in the city's history and cultural background.</li>
+	</ul>
+
+	<h2>Target Audience</h2>
+	<p>20-40 years old visitors to the city of Davis that are interested in stories about the city.</p>
+
+	<h2>Design Strategies</h2>
+	<p>As my website is aimed at people aged 20-40 who live in Davis, I want my color scheme to be vibrant and natural. I've chosen colors that reflect Davis's beautiful green parks, golden farmland, and blue skies. These colors are based on my own memories of Davis and the city's official website. I've also used the Gestalt principle of similarity to guide my color choices. Colors like gold, yellow, and green work well together because they share warm, earthy tones. I've used blue as an accent color to represent continuity and liveliness. Finally, I've used gray as the background color to make the primary colors stand out even more.</p>
+
+	<h2>Interaction Strategies</h2>
+	<p>There should include one major time-based feedback. The user can scan the brick with their phone and retrieve stories about the name prescribed on the brick. Through engaging interactivity, users should be able to be prompted to learn more about the brick. Users can choose options of less freedom and pick a module (eg. plant, major event, families at Davis) to learn more about Davis. The module is going to guide the user through a short journey about Davis.</p>
+
+	<h2>Experience Goal</h2>
+	<p>Users should be driven by their curiosity and explore a side of Davis that they are interested in, because of that reason, they can freely use on-site interaction and scan the bricks that they are curious about. Users should not feel compelled to intensively read lengthy articles and factual data. To alleviate such pressure, I would like to limit words to a paragraph per brick to reduce the cognitive load for users.</p>
+</article>
+<script>
+    const viewBtn = document.getElementById("view-btn");
+    const viewImg = document.getElementById("view-color");
+
+    const popup = document.getElementById("popup");
+    const palette = document.getElementById("palette");
+    const docLink = document.getElementById("doc-link");
+    const copyBtn = document.getElementById("copy-btn");
+
+    viewBtn.addEventListener("click", () => {
+    popup.style.display = "block";
+    });
+
+    viewImg.addEventListener("click", () => {
+        palette.style.display = "block";
+    });  
+
+    copyBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    copyBtn.addEventListener("click", () => {
+        docLink.select();
+        navigator.clipboard.writeText(docLink.value);
+        alert("Thank you for sharing my project!");
+    });
+
+    window.addEventListener("click", function(event) {
+        if (event.target !== viewImg) {
+           console.log("YEA");
+           palette.style.display = "none";
+        }
+     });
+</script>
+</body>
+</html>
