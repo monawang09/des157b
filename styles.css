@@ -47,7 +47,7 @@
 #course.switch{
     color: #020202;
     background: rgb(151,216,208);
-    border-right: 0.4em solid rgba(166,248,164,1) 36%;
+    border-right: 0.4em solid rgba(166,248,164,1);
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
