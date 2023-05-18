@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Functions</title>
+    <style>
+        html {
+            background-color: #efefef;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            line-height: 1.4em;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Compute Multiplication</h1>
+
+    <p>Calculate the square of the value. I thought about this function on the top of my head </p>
+
+    <h2>Named Function</h2>
+    <code>
+        <pre>
+            function(number){
+                return number*number; 
+            }
+        </pre>
+    </code>
+
+    <h2>Function Expression</h2>
+    <code>
+        <pre>
+            const square = function(number){
+                return number*number; 
+            }
+        </pre>
+    </code>
+
+    <h2>Arrow Function</h2>
+    <code>
+        <pre>
+            const square = (number) => number*number; 
+        </pre>
+    </code>
+
+    <h2>Challenge 1</h2>
+    <code>
+        <pre>
+            const greeting = (fname, lname)=> `Hello ${fname} ${lname}` ; 
+        </pre>
+    </code>
+
+    <h2>Challenge 2</h2>
+    <code>
+        <pre>
+            const square = (x) => x * x;
+        </pre>
+    </code>
+
+    <h2>Challenge 3</h2>
+    <code>
+        <pre>
+            const square = (x) => x * x;
+        </pre>
+    </code>
+
+    <h2>Challenge 4</h2>
+    <code>
+        <pre>
+            const max = (num1, num2) => num1 > num2 ? num1 : num2;
+        </pre>
+    </code>
+
+    
+    <h2>Challenge 5</h2>
+    <code>
+        <pre>
+            const score = [5, 10, 15, 20];
+            console.log(score.reduce(accumulator, curValue) => accumulator +curValue )
+        </pre>
+    </code>
+
+    <footer> Tangbaihe Wang </footer>
+    
+</body>
+</html>
