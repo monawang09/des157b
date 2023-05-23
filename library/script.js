@@ -9,7 +9,7 @@ let again = document.getElementById("again");
 var overlayCC = overlay.getContext('2d');
 let emotion =  null; 
 let prev = null;
-let tracker = true;
+// let tracker = true;
 let testCtr = 0;
 function startVideo(video){
     document.addEventListener("DOMContentLoaded", () => {
@@ -39,9 +39,9 @@ function initializeFacial(){
             requestAnimationFrame(drawLoop);
             overlayCC.clearRect(0, 0, 720, 560)
             ctracker.draw(overlay); 
-            if(tracker){
+            // if(tracker){
                 trackData();
-            }
+            // }
         }
 
         function trackData() {
@@ -50,10 +50,10 @@ function initializeFacial(){
             console.log(er);
             let maxCtr = 0; 
             let max = `none`; 
-
-            if (testCtr > 0){
-                setTimeout(updateEmotion(emotion),100); 
-            }
+            let val = 0;         
+            // if (testCtr > 0){
+            //     setTimeout(updateEmotion(emotion),100); 
+            // }
             if(er){
                 for (var i = 0;i < er.length;i++) {
                     if(er[i].emotion ==  'fear'){
@@ -61,8 +61,9 @@ function initializeFacial(){
                     }
                     if (er[i].value > maxCtr) {
                         maxCtr = er[i].value; 
-                        console.log(er[i].value);
+                        console.log(er[i].value);   
                         max = er[i].emotion; 
+                        val = er[i].value; 
                     } 
                 }
                 console.log(max);
@@ -72,15 +73,14 @@ function initializeFacial(){
                     console.log(`testCtr:${testCtr}`);
                     if (testCtr == 0){
                         prev = emotion.id; 
-                    }
+                    } 
                     console.log("Success");
                     console.log(prev);
                    
-                    displayData(emotion, prev);
-                    tracker = false;
+                    displayData(emotion, prev,val);
+                    // tracker = false;
                     testCtr += 1; 
                     prev = emotion.id; 
-                    
                     
                 } else {
                     console.log("ID not retrieved");
@@ -92,8 +92,7 @@ function initializeFacial(){
         
         }
         drawLoop(); 
-    
-        
+
     }
         
 }
@@ -112,18 +111,18 @@ function updateEmotion(emotion){
 
 again.addEventListener('click', () =>{
     console.log("Testing");
-    tracker = true; 
+    // tracker = true; 
 })
 
-function displayData(emotion, prev){
+function displayData(emotion, prev, val){
     emotion.style.display = 'block'; 
     // Create a new h2 element
     let response = document.getElementById(`response`); 
     if (response){
-        response.innerHTML = `You are feeling ${emotion.id} today`;
-        if (prev == emotion.id){
-            response.innerHTML = `You are still feeling ${emotion.id} today`;
-        }
+        // response.innerHTML = `You are feeling ${emotion.id} today`;
+        // if (prev == emotion.id){
+            response.innerHTML = `You are  feeling ${emotion.id} today at ${val.toFixed(2)}`;
+        // }
     } else {
         const newHeading = document.createElement('h2');
         newHeading.id = `response`; 
@@ -131,8 +130,6 @@ function displayData(emotion, prev){
         document.getElementById(`img-container`).appendChild(newHeading);
     }
 }
-
-
 
 
 var screenshotButton = document.getElementById('screenshot');
