@@ -109,10 +109,10 @@ function updateEmotion(emotion){
     
 }
 
-again.addEventListener('click', () =>{
-    console.log("Testing");
-    // tracker = true; 
-})
+// again.addEventListener('click', () =>{
+//     console.log("Testing");
+//     // tracker = true; 
+// })
 
 function displayData(emotion, prev, val){
     emotion.style.display = 'block'; 
@@ -126,24 +126,25 @@ function displayData(emotion, prev, val){
     } else {
         const newHeading = document.createElement('h2');
         newHeading.id = `response`; 
+        newHeading.className = `animate__heartBeat`; 
         newHeading.textContent = `You are feeling ${emotion.id} today`;
         document.getElementById(`img-container`).appendChild(newHeading);
     }
 }
 
 
-var screenshotButton = document.getElementById('screenshot');
-var screenshotContainer = document.getElementById('screenshotContainer');
+// var screenshotButton = document.getElementById('screenshot');
+// var screenshotContainer = document.getElementById('screenshotContainer');
 
-function captureScreenshot() {
-  var video = document.getElementById('myface');
-  html2canvas(video).then(function(canvas) {
-    screenshotContainer.innerHTML = ''; // Clear previous screenshots
-    screenshotContainer.appendChild(canvas);
-  });
-}
+// function captureScreenshot() {
+//   var video = document.getElementById('myface');
+//   html2canvas(video).then(function(canvas) {
+//     screenshotContainer.innerHTML = ''; // Clear previous screenshots
+//     screenshotContainer.appendChild(canvas);
+//   });
+// }
 
-screenshotButton.addEventListener('click', captureScreenshot);
+// screenshotButton.addEventListener('click', captureScreenshot);
 
 startVideo();
 initializeFacial();
