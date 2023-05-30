@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script
+      async
+      src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"
+    ></script>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.152.2/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="/main.js"></script>
+
+    <script type="module">
+      import * as THREE from "three";
+
+      //  import { ParallaxBarrierEffect } from 'three/addons/effects/ParallaxBarrierEffect.js';
+      import { AnaglyphEffect } from "three/addons/effects/AnaglyphEffect.js";
+      import { TrackballControls } from "three/addons/controls/TrackballControls.js";
+      import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+      let container, camera, scene, renderer, effect, controls;
+      let debug_mode = false;
+      const spheres = [];
+      const offset = [];
+
+      // Create an array of Vector3 points
+      var points = [
+        new THREE.Vector3(0.0, -2, 0.0),
+        new THREE.Vector3(-0.3, -1.5, 0.5),
+        new THREE.Vector3(-0.6, -1.3, 0.5),
+        new THREE.Vector3(0.05, 0.03, 1.5),
+        new THREE.Vector3(0.1, 0, 2),
+        //new THREE.Vector3(0.5, -.5, 0.5),
+        //new THREE.Vector3(0.10, 0, 0.10)
+      ];
+
+      // Create the CatmullRomCurve3
+      var curve = new THREE.CatmullRomCurve3(points);
+
+      // Optional: Customize curve properties
+      curve.curveType = "centripetal"; // or 'chordal' or 'catmullrom'
+      curve.tension = 0.5; // 0.0 to 1.0, controls the tightness of the curve
+
+      // Optional: Create a TubeGeometry from the curve
+      var tubeGeometry = new THREE.TubeGeometry(curve, 64, 0.05, 8, false);
+      var tubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+      var tubeMesh = new THREE.Mesh(tubeGeometry, tubeMaterial);
+
+      let mouseX = 0;
+      let mouseY = 0;
+      let cam_bar = 0;
+
+      let windowHalfX = window.innerWidth / 2;
+      let windowHalfY = window.innerHeight / 2;
+
+      document.addEventListener("mousemove", onDocumentMouseMove);
+      document.addEventListener("wheel", onDocumentWheelScroll);
+      document.addEventListener("keydown", toggleDebug);
+      init();
+      animate();
+
+      function toggleDebug(event) {
+        // Retrieve the key code or key value from the event
+        var keyCode = event.keyCode || event.which;
+
+        // Check if the key is "M" (key code 77)
+        if (keyCode === 77) {
+          console.log("M key pressed: Debug Mode");
+          // Perform specific actions for the "M" key
+          debug_mode = !debug_mode;
+          if (debug_mode) {
+            // Add the tubeMesh to the scene
+            scene.add(tubeMesh);
+          }
+          else{
+            scene.remove(tubeMesh);
+          }
+        }
+      }
+      // Generate normal distribution
+      function generateRandomNormal(mean, standardDeviation) {
+        var u = 0,
+          v = 0;
+        while (u === 0) u = Math.random(); // Exclude 0 to avoid infinity in logarithm
+        while (v === 0) v = Math.random();
+
+        var z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+        var randomValue = mean + z * standardDeviation;
+
+        return randomValue;
+      }
+
+      function init() {
+        let stdev = 0.15;
+        container = document.createElement("div");
+        document.body.appendChild(container);
+
+        camera = new THREE.PerspectiveCamera(
+          60,
+          window.innerWidth / window.innerHeight,
+          0.01,
+          100
+        );
+        if (debug_mode) {
+          camera.position.z = 6;
+          camera.position.x = 2;
+          camera.position.y = -2;
+        } else {
+          camera.position.z = 3;
+        }
+
+        camera.focalLength = 3;
+
+        const path = "";
+        const format = ".png";
+        const urls = [
+          path + "px" + format,
+          path + "nx" + format,
+          path + "py" + format,
+          path + "ny" + format,
+          path + "pz" + format,
+          path + "nz" + format,
+        ];
+
+        const textureCube = new THREE.CubeTextureLoader().load(urls);
+
+        scene = new THREE.Scene();
+        
+        // scene.background = textureCube;
+
+        const geometry = new THREE.SphereGeometry(0.1, 32, 16);
+        const material =
+          // new THREE.MeshPhongMaterial( { color: 0x000000, specular: 0x666666, emissive: 0xCDF23D, shininess: 10, opacity: 0.9, transparent: true, envMap:textureCube  } ) ;
+          //  new THREE.MeshBasicMaterial( { color: 0x94FC3F, envMap: textureCube } );
+          new THREE.MeshNormalMaterial();
+
+        for (let i = 0; i < 10000; i++) {
+          const mesh = new THREE.Mesh(geometry, material);
+
+          mesh.position.x = 0;
+          mesh.position.y = 0;
+          mesh.position.z = 0;
+
+          mesh.scale.x =
+            mesh.scale.y =
+            mesh.scale.z =
+              (1 + Math.random()) * 0.05;
+
+          scene.add(mesh);
+
+          spheres.push(mesh);
+
+          offset.push([
+            generateRandomNormal(0, stdev),
+            generateRandomNormal(0, stdev),
+            generateRandomNormal(0, stdev),
+          ]);
+        }
+
+        //
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        const width = window.innerWidth || 2;
+        const height = window.innerHeight || 2;
+
+        effect = new AnaglyphEffect(renderer);
+        effect.setSize(width, height);
+
+        controls = new OrbitControls(camera, renderer.domElement);
+
+        window.addEventListener("resize", onWindowResize);
+      }
+
+      function onWindowResize() {
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        effect.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      function onDocumentMouseMove(event) {
+        mouseX = (event.clientX - windowHalfX) / 100;
+        mouseY = (event.clientY - windowHalfY) / 100;
+      }
+
+      function onDocumentWheelScroll(event){
+        // Check the deltaY property of the event to get the scroll amount
+        var scrollAmount = event.deltaY;
+        // Perform actions based on the scroll amount
+        cam_bar += 0.00005*scrollAmount;
+        if (cam_bar > 1) cam_bar =1;
+        else if (cam_bar < 0) cam_bar = 0;
+      }
+
+      function updateCamera() {
+        // Get Camer Posit
+        let pos = tubeMesh.geometry.parameters.path.getPointAt(cam_bar);
+        camera.position.copy(pos);
+        camera.lookAt(tubeMesh.geometry.parameters.path.getPointAt(cam_bar+0.00005));
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+
+        render();
+      }
+
+      function render() {
+        const timer = 0.0001 * Date.now();
+
+        for (let i = 0, il = spheres.length; i < il; i++) {
+          let t = (i / il) * 40 + 0.5 * Math.cos(0.2 * timer);
+          while (t > 6) t -= 6;
+          while (t < 0) t += 6;
+          const sphere = spheres[i];
+          //console.log(sphere.position.x);
+          sphere.position.x =
+            Math.sqrt(t) * Math.cos(4 * t) +
+            0.05 * Math.cos(timer + i) +
+            offset[i][0];
+          sphere.position.y =
+            Math.sqrt(t) - 2 + 0.05 * Math.cos(timer + i * 1.2) + offset[i][1];
+          sphere.position.z =
+            Math.sqrt(t) * Math.sin(4 * t) +
+            0.05 * Math.sin(timer + i * 1.1) +
+            offset[i][2];
+
+          //sphere.position.x = Math.sin(i/100.0*Math.PI)*2  + 0.5 * Math.cos( 20*timer + i );
+          //sphere.position.y = i*0.05-5;
+          //sphere.position.z = Math.cos(i/100.0*Math.PI)*2 -5 + 0.5 * Math.sin( timer + i * 1.1 );
+        }
+        if (debug_mode) {
+          controls.update();
+        } else {
+          updateCamera();
+          camera.position.x += (mouseX - camera.position.x) * 0.01;
+          camera.position.y += (-mouseY - camera.position.y) * 0.05;
+        }
+
+        effect.render(scene, camera);
+      }
+    </script>
+  </body>
+</html>
